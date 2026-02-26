@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import TypewriterHeading from "@/components/domain/TypewriterHeading";
 
 const features = [
   {
@@ -20,36 +21,27 @@ const features = [
     description:
       "Companies are automatically grouped by industry — Tech, Finance, Healthcare, Consulting — with badges showing match score and top roles.",
   },
-  {
-    icon: "📝",
-    title: "Resume Suggestions",
-    description:
-      "Paste your resume and a job description to get AI-powered improvement suggestions with before/after bullet rewrites.",
-  },
 ];
 
 const steps = [
-  { number: "01", title: "Set Your Goals", description: "Tell us your preferred roles, industries, and background." },
-  { number: "02", title: "Add Companies", description: "Enter companies you want to visit at the career fair." },
-  { number: "03", title: "Get Prioritized", description: "See a ranked list with match scores and recommendations." },
-  { number: "04", title: "Generate Cards", description: "Get personalized pitches and talking points for each company." },
-  { number: "05", title: "Polish Your Resume", description: "Get targeted suggestions to strengthen your resume." },
+    { number: "01", title: "Sign Up"},
+  { number: "02", title: "Set Your Profile"},
+  { number: "03", title: "See Career Fair Companies"},
+  { number: "04", title: "Get Personalized Pitches"},
+  { number: "05", title: "Get HIRED!"},
 ];
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-light via-white to-blue-50 py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-light via-background to-blue-50 dark:to-slate-800 py-20 sm:py-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               🎯 Career Fair Prep Made Simple
             </div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Walk into every booth{" "}
-              <span className="text-primary">with confidence</span>
-            </h1>
+            <TypewriterHeading />
             <p className="mt-6 text-lg text-muted sm:text-xl max-w-2xl mx-auto leading-relaxed">
               Research companies, craft personalized pitches, prioritize your visits, and polish your resume — all in one powerful workspace.
             </p>
@@ -76,20 +68,23 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <Container>
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl">How It Works</h2>
             <p className="mt-3 text-lg text-muted">Five simple steps to career fair success</p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-            {steps.map((step) => (
-              <div key={step.number} className="text-center">
+            {steps.map((step, index) => (
+              <div 
+                key={step.number} 
+                className="text-center step-pop-up"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-white shadow-lg shadow-primary/20">
                   {step.number}
                 </div>
                 <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-1.5 text-sm text-muted">{step.description}</p>
               </div>
             ))}
           </div>
@@ -97,17 +92,17 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section id="features" className="py-20 bg-gray-50">
+      <section id="features" className="py-20 bg-secondary">
         <Container>
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Everything You Need</h2>
             <p className="mt-3 text-lg text-muted">Powerful tools to help you stand out</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-2xl border border-border bg-white p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/20"
+                className="rounded-2xl border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/20"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-light text-2xl">
                   {feature.icon}
